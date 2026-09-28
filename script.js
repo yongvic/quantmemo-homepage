@@ -16,17 +16,26 @@
 
   const burger = $("#burger");
   const mobileMenu = $("#mobileMenu");
-  burger.addEventListener("click", () => {
-    const open = burger.getAttribute("aria-expanded") === "true";
-    burger.setAttribute("aria-expanded", String(!open));
-    mobileMenu.hidden = open;
+  const desktopNav = matchMedia("(min-width: 1201px)");
+  const setMenu = (open) => {
+    burger.setAttribute("aria-expanded", String(open));
+    burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    mobileMenu.hidden = !open;
+    nav.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-lock", open);
+  };
+  burger.addEventListener("click", () => setMenu(burger.getAttribute("aria-expanded") !== "true"));
+  $$("a", mobileMenu).forEach((a) => a.addEventListener("click", () => setMenu(false)));
+  document.addEventListener("click", (e) => {
+    if (mobileMenu.hidden || nav.contains(e.target)) return;
+    setMenu(false);
   });
-  $$("a", mobileMenu).forEach((a) =>
-    a.addEventListener("click", () => {
-      burger.setAttribute("aria-expanded", "false");
-      mobileMenu.hidden = true;
-    })
-  );
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape" || mobileMenu.hidden) return;
+    setMenu(false);
+    burger.focus();
+  });
+  desktopNav.addEventListener("change", (e) => { if (e.matches) setMenu(false); });
 
   /* ------------------------------------------------------------
      REVEAL + COUNTERS
