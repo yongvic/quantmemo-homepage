@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuantMemo — Everything quant, in one place.</title>
+  <meta name="description" content="Learn quantitative finance, research, machine learning, and trading, from the core concepts and landmark papers to a deep interview question bank." />
+  <meta name="theme-color" content="#191A23" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23191A23'/%3E%3Cpath d='M32 10c2 14 6 18 22 22-16 4-20 8-22 22-2-14-6-18-22-22 16-4 20-8 22-22z' fill='%23B9FF66'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Reusable SVG symbols -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="spark" viewBox="0 0 100 100">
+        <path d="M50 0C54 36 64 46 100 50C64 54 54 64 50 100C46 64 36 54 0 50C36 46 46 36 50 0Z" />
+      </symbol>
+      <symbol id="arrow" viewBox="0 0 24 24">
+        <path d="M5 19L19 5M19 5H8M19 5v11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+      </symbol>
+      <pattern id="grid-pat" width="16" height="16" patternUnits="userSpaceOnUse">
+        <path d="M16 0H0V16" fill="none" stroke="#191A23" stroke-opacity=".12" stroke-width="1" />
+      </pattern>
+      <pattern id="dots-pat" width="22" height="22" patternUnits="userSpaceOnUse">
+        <circle cx="2" cy="2" r="1.3" fill="#191A23" fill-opacity=".16" />
+      </pattern>
+    </defs>
+  </svg>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="logo" aria-label="QuantMemo home" aria-current="page">
+        <span class="logo__mark" aria-hidden="true">
+          <svg viewBox="0 0 100 100"><use href="#spark" /></svg>
+        </span>
+        <span class="logo__word">Qm<span class="logo__full">QuantMemo</span></span>
+      </a>
+
+      <nav class="nav__links" aria-label="Primary">
+        <a href="learn.html">Learn</a>
+        <a href="interviews.html">Interviews</a>
+        <a href="tools.html">Tools</a>
+        <a href="daily.html">Daily</a>
+        <a href="strategies.html">Strategies</a>
+        <a href="writing.html">Writing</a>
+        <a href="about.html">About</a>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="search-trigger" id="searchTrigger" aria-label="Search strategies, concepts, tools, firms" aria-haspopup="dialog">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span class="search-trigger__text">Search strategies, concepts, tools, firms…</span>
+          <kbd>Ctrl K</kbd>
+        </button>
+        <a href="signin.html" class="btn btn--outline btn--sm">Sign in</a>
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <a href="learn.html">Learn</a><a href="interviews.html">Interviews</a><a href="tools.html">Tools</a><a href="daily.html">Daily</a><a href="strategies.html">Strategies</a><a href="writing.html">Writing</a><a href="about.html">About</a>
+      <a href="signin.html" class="btn btn--dark">Sign in</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero container">
+      <div class="hero__copy">
+        <p class="eyebrow reveal"><span class="dot-live"></span> Free · Open curriculum · Updated daily</p>
+        <h1 class="hero__title reveal">
+          Everything <span class="hero__mark">quant,<svg viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M3 17C60 6 140 4 297 13" /></svg></span> in one place.
+        </h1>
+        <p class="hero__lead reveal">Learn quantitative finance, research, machine learning, and trading, from the core concepts and landmark papers to a deep interview question bank.</p>
+        <div class="hero__ctas reveal">
+          <a href="learn.html" class="btn btn--dark btn--lg">Start the curriculum</a>
+          <a href="learn.html#roadmap" class="link-arrow">the full roadmap <span aria-hidden="true">→</span></a>
+        </div>
+        <ul class="hero__proof reveal" aria-label="Library at a glance">
+          <li><strong data-count="5170">5 170</strong><span>concepts</span></li>
+          <li><strong data-count="4403">4 403</strong><span>interview questions</span></li>
+          <li><strong data-count="160">160</strong><span>atlas islands</span></li>
+        </ul>
+      </div>
+
+      <div class="hero__art" aria-hidden="true">
+        <svg class="hero-svg" viewBox="0 0 600 540">
+          <!-- orbit -->
+          <ellipse cx="300" cy="275" rx="270" ry="200" fill="none" stroke="#191A23" stroke-width="1.5" stroke-dasharray="4 8" class="spin-slow" />
+          <ellipse cx="300" cy="275" rx="200" ry="250" fill="none" stroke="#191A23" stroke-opacity=".25" stroke-width="1.5" />
+
+          <!-- memo card -->
+          <g class="float-a">
+            <g transform="rotate(-6 300 265)">
+              <rect x="125" y="138" width="350" height="270" rx="30" fill="#191A23" />
+              <rect x="125" y="128" width="350" height="270" rx="30" fill="#fff" stroke="#191A23" stroke-width="2.5" />
+              <rect x="125" y="128" width="350" height="270" rx="30" fill="url(#grid-pat)" />
+              <path d="M125 178H475" stroke="#191A23" stroke-width="2" />
+              <circle cx="155" cy="153" r="7" fill="#B9FF66" stroke="#191A23" stroke-width="2" />
+              <circle cx="178" cy="153" r="7" fill="#fff" stroke="#191A23" stroke-width="2" />
+              <circle cx="201" cy="153" r="7" fill="#191A23" />
+              <rect x="352" y="141" width="100" height="24" rx="7" fill="#B9FF66" stroke="#191A23" stroke-width="2" />
+              <text x="402" y="158" text-anchor="middle" class="svg-mono" font-size="13">memo #636</text>
+
+              <!-- candles -->
+              <g stroke="#191A23" stroke-width="2">
+                <path d="M165 205v50M195 215v48M225 200v44M255 190v46M285 205v40M315 185v42M345 172v44M375 165v40M405 150v44M435 158v36" />
+                <rect x="158" y="215" width="14" height="30" rx="3" fill="#fff" />
+                <rect x="188" y="225" width="14" height="28" rx="3" fill="#191A23" />
+                <rect x="218" y="208" width="14" height="26" rx="3" fill="#B9FF66" />
+                <rect x="248" y="198" width="14" height="28" rx="3" fill="#B9FF66" />
+                <rect x="278" y="212" width="14" height="22" rx="3" fill="#191A23" />
+                <rect x="308" y="193" width="14" height="26" rx="3" fill="#B9FF66" />
+                <rect x="338" y="180" width="14" height="28" rx="3" fill="#B9FF66" />
+                <rect x="368" y="172" width="14" height="24" rx="3" fill="#fff" />
+                <rect x="398" y="158" width="14" height="28" rx="3" fill="#B9FF66" />
+                <rect x="428" y="165" width="14" height="22" rx="3" fill="#191A23" />
+              </g>
+              <!-- bell curve -->
+              <path d="M150 372C215 372 235 262 300 262C365 262 385 372 450 372Z" fill="#B9FF66" stroke="#191A23" stroke-width="2.5" />
+              <path d="M300 262V372" stroke="#191A23" stroke-width="2" stroke-dasharray="4 5" />
+              <path d="M150 372H450" stroke="#191A23" stroke-width="2.5" />
+              <text x="300" y="252" text-anchor="middle" class="svg-math" font-size="18">μ</text>
+              <text x="236" y="364" text-anchor="middle" class="svg-math" font-size="15">−σ</text>
+              <text x="364" y="364" text-anchor="middle" class="svg-math" font-size="15">+σ</text>
+            </g>
+          </g>
+
+          <!-- die -->
+          <g class="float-b">
+            <polygon points="478,52 530,78 478,104 426,78" fill="#B9FF66" stroke="#191A23" stroke-width="2.5" stroke-linejoin="round" />
+            <polygon points="426,78 478,104 478,160 426,134" fill="#fff" stroke="#191A23" stroke-width="2.5" stroke-linejoin="round" />
+            <polygon points="478,104 530,78 530,134 478,160" fill="#191A23" stroke="#191A23" stroke-width="2.5" stroke-linejoin="round" />
+            <ellipse cx="478" cy="78" rx="7" ry="4" fill="#191A23" />
+            <circle cx="442" cy="100" r="4.5" fill="#191A23" /><circle cx="462" cy="138" r="4.5" fill="#191A23" />
+            <circle cx="494" cy="110" r="4.5" fill="#B9FF66" /><circle cx="504" cy="119" r="4.5" fill="#B9FF66" /><circle cx="514" cy="128" r="4.5" fill="#B9FF66" />
+          </g>
+
+          <!-- coin -->
+          <g class="float-c">
+            <circle cx="105" cy="420" r="52" fill="#191A23" transform="translate(0 6)" />
+            <circle cx="105" cy="420" r="52" fill="#B9FF66" stroke="#191A23" stroke-width="2.5" />
+            <circle cx="105" cy="420" r="40" fill="none" stroke="#191A23" stroke-width="2" stroke-dasharray="3 5" />
+            <text x="105" y="437" text-anchor="middle" class="svg-math" font-size="48">Σ</text>
+          </g>
+
+          <!-- integral bubble -->
+          <g class="float-b">
+            <rect x="40" y="170" width="82" height="82" rx="24" fill="#fff" stroke="#191A23" stroke-width="2.5" />
+            <text x="81" y="228" text-anchor="middle" class="svg-math" font-size="52">∫</text>
+            <path d="M104 252l10 16-22-8" fill="#fff" stroke="#191A23" stroke-width="2.5" stroke-linejoin="round" />
+          </g>
+
+          <!-- greeks pill -->
+          <g class="float-a">
+            <rect x="330" y="440" width="190" height="50" rx="25" fill="#191A23" />
+            <text x="425" y="473" text-anchor="middle" class="svg-math" font-size="24" fill="#B9FF66">Δ  Γ  Θ  ν</text>
+          </g>
+
+          <!-- cursor -->
+          <g class="float-c">
+            <path d="M478 250l40 92 12-36 36-12z" fill="#fff" stroke="#191A23" stroke-width="2.5" stroke-linejoin="round" />
+          </g>
+
+          <!-- sparks -->
+          <use href="#spark" x="505" y="300" width="70" height="70" fill="#B9FF66" stroke="#191A23" stroke-width="3" class="twinkle" />
+          <use href="#spark" x="70" y="60" width="54" height="54" fill="#191A23" class="twinkle d2" />
+          <use href="#spark" x="250" y="470" width="30" height="30" fill="#191A23" class="twinkle d3" />
+          <use href="#spark" x="355" y="40" width="26" height="26" fill="#B9FF66" stroke="#191A23" stroke-width="4" class="twinkle d1" />
+          <!-- squiggle -->
+          <path d="M165 70c15-20 30 20 45 0s30 20 45 0 30 20 45 0" fill="none" stroke="#191A23" stroke-width="2.5" stroke-linecap="round" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- Firms marquee -->
+    <section class="marquee" aria-label="Firms featured in the question bank">
+      <p class="marquee__label container">Questions tagged from interviews at</p>
+      <div class="marquee__track">
+        <div class="marquee__row">
+          <span>Jane Street</span><i>✦</i><span>SIG</span><i>✦</i><span>Citadel</span><i>✦</i><span>Akuna</span><i>✦</i><span>Optiver</span><i>✦</i><span>Two Sigma</span><i>✦</i><span>Hudson River</span><i>✦</i><span>Meta</span><i>✦</i><span>IMC</span><i>✦</i><span>DE Shaw</span><i>✦</i>
+        </div>
+        <div class="marquee__row" aria-hidden="true">
+          <span>Jane Street</span><i>✦</i><span>SIG</span><i>✦</i><span>Citadel</span><i>✦</i><span>Akuna</span><i>✦</i><span>Optiver</span><i>✦</i><span>Two Sigma</span><i>✦</i><span>Hudson River</span><i>✦</i><span>Meta</span><i>✦</i><span>IMC</span><i>✦</i><span>DE Shaw</span><i>✦</i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CURRICULUM ============ -->
+    <section class="section container" id="curriculum">
+      <div class="sec-head reveal">
+        <h2><span class="hl">Curriculum</span></h2>
+        <p>Seven modules, from first principles to the trading floor. Start the curriculum at module I, or open the one you need today.</p>
+      </div>
+
+      <div class="modules">
+        <a href="learn.html" class="module module--grey reveal">
+          <div class="module__text">
+            <span class="module__num">I · Σ</span>
+            <h3><span class="hl">Mathematical</span><br /><span class="hl">Foundations</span></h3>
+            <span class="module__cta"><span class="circle-arrow"><svg><use href="#arrow" /></svg></span>Start module</span>
+          </div>
+          <svg class="module__art" viewBox="0 0 210 170" aria-hidden="true">
+            <rect x="18" y="34" width="150" height="120" rx="16" fill="#191A23" />
+            <rect x="18" y="26" width="150" height="120" rx="16" fill="#fff" stroke="#191A23" stroke-width="2" />
+            <rect x="18" y="26" width="150" height="120" rx="16" fill="url(#grid-pat)" />
+            <path d="M34 110C54 58 74 58 93 94S134 132 152 72" fill="none" stroke="#191A23" stroke-width="3" stroke-linecap="round" />
+            <path d="M34 128H152M40 44V134" stroke="#191A23" stroke-width="2" />
+            <circle cx="170" cy="46" r="30" fill="#B9FF66" stroke="#191A23" stroke-width="2.5" />
+            <text x="170" y="60" text-anchor="middle" class="svg-math" font-size="38">Σ</text>
+            <use href="#spark" x="4" y="130" width="30" height="30" fill="#191A23" />
+          </svg>
+        </a>
+
+        <a href="learn.html" class="module module--green reveal">
+          <div class="module__text">
+            <span class="module__num">II</span>
+            <h3><span class="hl hl--white">Statistics &amp;</span><br /><span class="hl hl--white">Econometrics</span></h3>
+            <span class="module__cta"><span class="circle-arrow"><svg><use href="#arrow" /></svg></span>Start module</span>
+          </div>
+          <svg class="module__art" viewBox="0 0 210 170" aria-hidden="true">
+            <g stroke="#191A23" stroke-width="2">
+              <rect x="30" y="118" width="18" height="30" rx="3" fill="#fff" />
+              <rect x="52" y="92" width="18" height="56" rx="3" fill="#fff" />
+              <rect x="74" y="60" width="18" height="88" rx="3" fill="#191A23" />
+              <rect x="96" y="44" width="18" height="104" rx="3" fill="#191A23" />
+              <rect x="118" y="64" width="18" height="84" rx="3" fill="#191A23" />
+              <rect x="140" y="96" width="18" height="52" rx="3" fill="#fff" />
+              <rect x="162" y="122" width="18" height="26" rx="3" fill="#fff" />
+            </g>
+            <path d="M20 146C70 146 70 34 105 34S140 146 190 146" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="1 7" stroke-linecap="round" />
+            <path d="M16 149H194" stroke="#191A23" stroke-width="3" />
+            <rect x="140" y="16" width="62" height="28" rx="14" fill="#fff" stroke="#191A23" stroke-width="2" />
+            <text x="171" y="36" text-anchor="middle" class="svg-math" font-size="16">p &lt; .05</text>
+          </svg>
+        </a>
+
+        <a href="learn.html" class="module module--dark reveal">
+          <div class="module__text">
+            <span class="module__num">III</span>
+            <h3><span class="hl hl--white">Portfolio Construction</span><br /><span class="hl hl--white">&amp; Risk</span></h3>
+            <span class="module__cta"><span class="circle-arrow circle-arrow--light"><svg><use href="#arrow" /></svg></span>Start module</span>
+          </div>
+          <svg class="module__art" viewBox="0 0 210 170" aria-hidden="true">
+            <circle cx="88" cy="92" r="58" fill="#fff" stroke="#fff" stroke-width="2" />
+            <path d="M88 92V34A58 58 0 0 1 144 106Z" fill="#B9FF66" stroke="#191A23" stroke-width="2.5" stroke-linejoin="round" />
+            <path d="M88 92L144 106A58 58 0 0 1 60 143Z" fill="#191A23" stroke="#191A23" stroke-width="2.5" stroke-linejoin="round" />
+            <path d="M88 92L60 143" stroke="#fff" stroke-width="2.5" />
+            <path d="M160 40l32 12v28c0 22-14 36-32 44-18-8-32-22-32-44V52z" fill="#B9FF66" stroke="#191A23" stroke-width="2.5" stroke-linejoin="round" transform="translate(4 20)" />
+            <path d="M152 92l9 9 17-20" fill="none" stroke="#191A23" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+
+        <a href="learn.html" class="module module--grey reveal">
+          <div class="module__text">
+            <span class="module__num">IV</span>
+            <h3><span class="hl">Derivatives &amp;</span><br /><span class="hl">Volatility</span></h3>
+            <span class="module__cta"><span class="circle-arrow"><svg><use href="#arrow" /></svg></span>Start module</span>
+          </div>
+          <svg class="module__art" viewBox="0 0 210 170" aria-hidden="true">
+            <path d="M28 20V146H196" fill="none" stroke="#191A23" stroke-width="3" stroke-linecap="round" />
+            <path d="M40 40C80 118 140 118 188 48" fill="none" stroke="#191A23" stroke-width="3" stroke-linecap="round" />
+            <g fill="#B9FF66" stroke="#191A23" stroke-width="2.5">
+              <circle cx="52" cy="62" r="8" /><circle cx="80" cy="92" r="8" /><circle cx="112" cy="104" r="8" /><circle cx="144" cy="94" r="8" /><circle cx="174" cy="68" r="8" />
+            </g>
+            <rect x="90" y="14" width="92" height="30" rx="15" fill="#191A23" />
+            <text x="136" y="35" text-anchor="middle" class="svg-math" font-size="16" fill="#B9FF66">σ(K, T)</text>
+            <text x="112" y="162" text-anchor="middle" class="svg-mono" font-size="11">strike →</text>
+          </svg>
+        </a>
+
+        <a href="learn.html" class="module module--green reveal">
+          <div class="module__text">
+            <span class="module__num">V</span>
+            <h3><span class="hl hl--white">Systematic Strategies</span><br /><span class="hl hl--white">&amp; Alpha</span></h3>
+            <span class="module__cta"><span class="circle-arrow"><svg><use href="#arrow" /></svg></span>Start module</span>
+          </div>
+          <svg class="module__art" viewBox="0 0 210 170" aria-hidden="true">
+            <circle cx="150" cy="58" r="42" fill="#fff" stroke="#191A23" stroke-width="2.5" />
+            <circle cx="150" cy="58" r="27" fill="#191A23" />
+            <circle cx="150" cy="58" r="12" fill="#B9FF66" stroke="#191A23" stroke-width="2" />
+            <path d="M20 146L60 110L88 124L120 84L150 58" fill="none" stroke="#191A23" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M130 56l20 2-2 20" fill="none" stroke="#191A23" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+            <rect x="18" y="20" width="66" height="30" rx="15" fill="#fff" stroke="#191A23" stroke-width="2" />
+            <text x="51" y="41" text-anchor="middle" class="svg-math" font-size="17">α &gt; 0</text>
+          </svg>
+        </a>
+
+        <a href="learn.html" class="module module--dark reveal">
+          <div class="module__text">
+            <span class="module__num">VI</span>
+            <h3><span class="hl hl--white">Backtesting &amp;</span><br /><span class="hl hl--white">ML in Finance</span></h3>
+            <span class="module__cta"><span class="circle-arrow circle-arrow--light"><svg><use href="#arrow" /></svg></span>Start module</span>
+          </div>
+          <svg class="module__art" viewBox="0 0 210 170" aria-hidden="true">
+            <g stroke="#fff" stroke-opacity=".55" stroke-width="1.5">
+              <path d="M36 40L104 30M36 40L104 86M36 40L104 142M36 86L104 30M36 86L104 86M36 86L104 142M36 132L104 30M36 132L104 86M36 132L104 142M104 30L172 60M104 86L172 60M104 142L172 60M104 30L172 116M104 86L172 116M104 142L172 116" />
+            </g>
+            <g stroke="#191A23" stroke-width="2.5">
+              <circle cx="36" cy="40" r="12" fill="#fff" /><circle cx="36" cy="86" r="12" fill="#fff" /><circle cx="36" cy="132" r="12" fill="#fff" />
+              <circle cx="104" cy="30" r="12" fill="#B9FF66" /><circle cx="104" cy="86" r="12" fill="#B9FF66" /><circle cx="104" cy="142" r="12" fill="#B9FF66" />
+              <circle cx="172" cy="60" r="14" fill="#fff" /><circle cx="172" cy="116" r="14" fill="#B9FF66" />
+            </g>
+            <use href="#spark" x="176" y="8" width="26" height="26" fill="#B9FF66" />
+          </svg>
+        </a>
+
+        <a href="learn.html" class="module module--grey reveal">
+          <div class="module__text">
+            <span class="module__num">VII</span>
+            <h3><span class="hl">Market Microstructure</span><br /><span class="hl">&amp; Execution</span></h3>
+            <span class="module__cta"><span class="circle-arrow"><svg><use href="#arrow" /></svg></span>Start module</span>
+          </div>
+          <svg class="module__art" viewBox="0 0 210 170" aria-hidden="true">
+            <g stroke="#191A23" stroke-width="2">
+              <rect x="44" y="24" width="56" height="18" rx="4" fill="#B9FF66" />
+              <rect x="22" y="48" width="78" height="18" rx="4" fill="#B9FF66" />
+              <rect x="58" y="72" width="42" height="18" rx="4" fill="#B9FF66" />
+              <rect x="10" y="96" width="90" height="18" rx="4" fill="#B9FF66" />
+              <rect x="112" y="24" width="38" height="18" rx="4" fill="#fff" />
+              <rect x="112" y="48" width="70" height="18" rx="4" fill="#fff" />
+              <rect x="112" y="72" width="54" height="18" rx="4" fill="#fff" />
+              <rect x="112" y="96" width="88" height="18" rx="4" fill="#fff" />
+            </g>
+            <path d="M106 14V124" stroke="#191A23" stroke-width="3" stroke-dasharray="3 5" />
+            <rect x="58" y="132" width="96" height="30" rx="15" fill="#191A23" />
+            <text x="106" y="152" text-anchor="middle" class="svg-mono" font-size="12" fill="#B9FF66">bid | ask</text>
+          </svg>
+        </a>
+
+        <a href="learn.html#roadmap" class="module module--roadmap reveal">
+          <div class="module__text">
+            <span class="module__num">Everything, connected</span>
+            <h3 class="module__big">See the full roadmap</h3>
+            <p>Seven modules, 160 islands and 5 170 concepts. One map.</p>
+            <span class="module__cta"><span class="circle-arrow circle-arrow--green"><svg><use href="#arrow" /></svg></span>the full roadmap</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ INTERVIEWS / BANK ============ -->
+    <section class="section container" id="interviews">
+      <div class="sec-head reveal">
+        <h2><span class="hl">Interviews</span></h2>
+        <p>Browse the bank: thousands of questions tagged by topic and firm, from probability puzzles to market-making games.</p>
+      </div>
+
+      <div class="bank reveal">
+        <div class="bank__intro">
+          <h3>Browse the bank</h3>
+          <p>Pick a topic and drill until the patterns feel obvious. Every question comes with a full worked solution.</p>
+          <a href="interviews.html" class="btn btn--dark">all questions →</a>
+          <svg class="bank__art" viewBox="0 0 260 200" aria-hidden="true">
+            <rect x="40" y="46" width="170" height="130" rx="22" fill="#191A23" />
+            <rect x="40" y="36" width="170" height="130" rx="22" fill="#B9FF66" stroke="#191A23" stroke-width="2.5" />
+            <text x="125" y="122" text-anchor="middle" class="svg-math" font-size="74">?</text>
+            <rect x="170" y="10" width="78" height="56" rx="18" fill="#fff" stroke="#191A23" stroke-width="2.5" />
+            <text x="209" y="46" text-anchor="middle" class="svg-mono" font-size="15">1/2</text>
+            <path d="M190 66l-8 14 20-12" fill="#fff" stroke="#191A23" stroke-width="2.5" stroke-linejoin="round" />
+            <use href="#spark" x="6" y="12" width="44" height="44" fill="#191A23" class="twinkle" />
+            <use href="#spark" x="206" y="150" width="30" height="30" fill="#B9FF66" stroke="#191A23" stroke-width="4" class="twinkle d2" />
+          </svg>
+        </div>
+
+        <div class="topics">
+          <button class="topic" data-jump="Probability"><span class="topic__glyph">P(A)</span><span class="topic__name">Probability</span><span class="topic__count">1 350</span></button>
+          <button class="topic" data-jump="Statistics"><span class="topic__glyph">σ²</span><span class="topic__name">Statistics</span><span class="topic__count">1 350</span></button>
+          <button class="topic" data-jump="Brainteasers"><span class="topic__glyph">?!</span><span class="topic__name">Brainteasers</span><span class="topic__count">653</span></button>
+          <button class="topic" data-jump="Market Making"><span class="topic__glyph">⇅</span><span class="topic__name">Market Making</span><span class="topic__count">350</span></button>
+          <button class="topic" data-jump="Mental Math"><span class="topic__glyph">√x</span><span class="topic__name">Mental Math</span><span class="topic__count">350</span></button>
+          <button class="topic" data-jump="Coding"><span class="topic__glyph">&lt;/&gt;</span><span class="topic__name">Coding</span><span class="topic__count">350</span></button>
+        </div>
+
+        <div class="sheets" id="tools">
+          <div class="sheets__title"><span class="hl">CP / DSA sheets</span></div>
+          <a href="interviews.html#sheets" class="sheet">
+            <span class="sheet__icon" aria-hidden="true">{ }</span>
+            <span><strong>Quant DSA &amp; CP Problemset</strong><small>Curated for quant dev interviews</small></span>
+            <span class="circle-arrow circle-arrow--green"><svg><use href="#arrow" /></svg></span>
+          </a>
+          <a href="interviews.html#sheets" class="sheet">
+            <span class="sheet__icon" aria-hidden="true">O(n)</span>
+            <span><strong>Competitive Programming Problemset</strong><small>From warm-ups to contest level</small></span>
+            <span class="circle-arrow circle-arrow--green"><svg><use href="#arrow" /></svg></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DAILY ============ -->
+    <section class="daily" id="daily">
+      <div class="container daily__inner">
+        <div class="daily__copy reveal">
+          <h2><span class="hl">Today's five</span></h2>
+          <p class="daily__meta svg-mono" id="dailyMeta">quant daily · #636 · 2026-09-28</p>
+          <p class="daily__lead">Five questions, one sitting. Everyone gets the same set, so you can compare notes with friends and colleagues.</p>
+          <div class="countdown" aria-live="off">
+            <span class="countdown__label">Next set drops in</span>
+            <span class="countdown__time svg-mono" id="countdown">--:--:--</span>
+          </div>
+          <div class="daily__ctas">
+            <a href="#quiz" class="btn btn--green">Solve today's set</a>
+            <a href="daily.html" class="link-arrow link-arrow--light">The daily edition <span aria-hidden="true">→</span></a>
+          </div>
+          <p class="daily__note">A new set drops every day at midnight UTC. The same five questions for everyone.</p>
+        </div>
+
+        <div class="quiz reveal" id="quiz" aria-live="polite">
+          <div class="quiz__top">
+            <span class="quiz__count svg-mono"><b id="qIndex">01</b> / 05</span>
+            <div class="quiz__bars" id="qBars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="quiz__tagline">
+            <span class="chip" id="qCat">Brainteasers</span>
+            <span class="difficulty" id="qDiff" aria-label="Difficulty"></span>
+          </div>
+          <h3 class="quiz__title" id="qTitle">Why four weighings handle thirty-nine coins</h3>
+          <div class="quiz__body" id="qBody"></div>
+          <p class="quiz__pick">Pick your answer</p>
+          <div class="quiz__options" id="qOptions" role="radiogroup"></div>
+          <div class="quiz__explain" id="qExplain" hidden></div>
+          <div class="quiz__nav">
+            <button class="ghost-btn" id="qBack">← Back</button>
+            <button class="ghost-btn" id="qSkip">Skip this question →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ATLAS ============ -->
+    <section class="section container" id="atlas">
+      <div class="sec-head reveal">
+        <h2><span class="hl">The whole library, as one map</span></h2>
+        <p>Hover a roadmap · click an island · plant your flags.</p>
+      </div>
+
+      <div class="atlas reveal">
+        <aside class="roadmaps" aria-label="Roadmaps">
+          <button class="roadmap" data-route="scratch"><span class="roadmap__dot"></span><span><strong>Starting From Scratch</strong><small>15 sections</small></span></button>
+          <button class="roadmap" data-route="fresher"><span class="roadmap__dot"></span><span><strong>Preparing for Fresher Quant Roles</strong><small>16 sections</small></span></button>
+          <button class="roadmap" data-route="switch"><span class="roadmap__dot"></span><span><strong>Switching From Software or Science</strong><small>16 sections</small></span></button>
+          <button class="roadmap" data-route="own"><span class="roadmap__dot"></span><span><strong>Trading Your Own Money</strong><small>17 sections</small></span></button>
+          <button class="roadmap" data-route="job"><span class="roadmap__dot"></span><span><strong>New in a Quant Job</strong><small>15 sections</small></span></button>
+          <div class="roadmap-group">
+            <button class="roadmap" data-route="advanced"><span class="roadmap__dot"></span><span><strong>Advanced Specialisations</strong><small>42 sections · 5 paths</small></span></button>
+            <div class="subpaths">
+              <button class="subpath" data-route="adv-micro">Microstructure &amp; Execution</button>
+              <button class="subpath" data-route="adv-vol">Volatility &amp; Derivatives</button>
+              <button class="subpath" data-route="adv-ml">Machine Learning in Finance</button>
+              <button class="subpath" data-route="adv-port">Portfolio Construction</button>
+              <button class="subpath" data-route="adv-design">Market Design</button>
+            </div>
+          </div>
+          <p class="roadmaps__hint">Hover a roadmap to light its route.</p>
+        </aside>
+
+        <div class="map" id="map">
+          <div class="map__hud">
+            <span class="svg-mono">160 islands · 14 regions · 5 170 concepts</span>
+            <span class="map__flags svg-mono" id="flagCount">0 flags</span>
+          </div>
+          <svg id="mapSvg" viewBox="0 0 1000 560" role="img" aria-label="Interactive map of the QuantMemo library">
+            <rect width="1000" height="560" fill="url(#dots-pat)" />
+            <g id="world">
+              <g id="routesLayer"></g>
+              <g id="islandsLayer"></g>
+              <g id="labelsLayer"></g>
+            </g>
+          </svg>
+          <div class="map__controls" role="toolbar" aria-label="Map controls">
+            <button data-map="in" aria-label="Zoom in">+</button>
+            <button data-map="out" aria-label="Zoom out">−</button>
+            <button data-map="reset" aria-label="Reset view">⊞</button>
+            <button data-map="rotl" aria-label="Rotate left">↶</button>
+            <button data-map="rotr" aria-label="Rotate right">↷</button>
+          </div>
+          <p class="map__help">Drag to rotate · shift-drag to pan · scroll to zoom. Click an island to land on it.</p>
+          <div class="island-card" id="islandCard" hidden>
+            <button class="island-card__close" id="islandClose" aria-label="Close">×</button>
+            <span class="island-card__region svg-mono" id="icRegion">core finance</span>
+            <h4 id="icName">accounting valuation</h4>
+            <p id="icStats">88 concepts · 11 checkpoints</p>
+            <div class="island-card__actions">
+              <a href="learn.html" class="btn btn--dark btn--sm" id="icLand">Land on it →</a>
+              <button class="btn btn--outline btn--sm" id="icFlag">Plant flag</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ QUESTION BANK ============ -->
+    <section class="section container" id="bank">
+      <div class="sec-head reveal">
+        <h2><span class="hl">Question bank</span></h2>
+        <p>Six from the bank, in full. Type an answer and submit to check it.</p>
+        <a href="interviews.html" class="link-arrow sec-head__link">Browse the bank <span aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="filters reveal" role="tablist" aria-label="Filter questions">
+        <button class="filter is-active" role="tab" aria-selected="true" data-filter="All">All <span>4 403</span></button>
+        <button class="filter" role="tab" aria-selected="false" data-filter="Probability">Probability <span>1 350</span></button>
+        <button class="filter" role="tab" aria-selected="false" data-filter="Statistics">Statistics <span>1 350</span></button>
+        <button class="filter" role="tab" aria-selected="false" data-filter="Brainteasers">Brainteasers <span>653</span></button>
+        <button class="filter" role="tab" aria-selected="false" data-filter="Coding">Coding <span>350</span></button>
+        <button class="filter" role="tab" aria-selected="false" data-filter="Market Making">Market Making <span>350</span></button>
+        <button class="filter" role="tab" aria-selected="false" data-filter="Mental Math">Mental Math <span>350</span></button>
+      </div>
+
+      <div class="questions" id="questions">
+        <!-- 01 -->
+        <article class="q reveal" data-cat="Probability" data-answer="0.6667" data-tol="0.01" data-solution="For passenger k ≥ 2 the answer is (n − k + 1)/(n − k + 2). With n = 100 and k = 99 that gives 2/3.">
+          <button class="q__head" aria-expanded="false">
+            <span class="q__num">01</span>
+            <span class="q__title"><small>Probability · Jane Street</small>What are the middle passenger's chances?</span>
+            <span class="q__toggle" aria-hidden="true"></span>
+          </button>
+          <div class="q__panel"><div class="q__inner">
+            <p><span class="chip chip--dark">100</span> 100 passengers board a full flight in order. Passenger 1 lost their pass and sits in a uniformly random seat; everyone else takes their own seat if free, otherwise a random free seat.</p>
+            <p>What is the probability that passenger <i class="m">k</i> (say, passenger 99) gets their own seat? Find the general formula.</p>
+            <form class="answer" novalidate>
+              <label>Your answer<input type="text" inputmode="decimal" placeholder="Type your answer, e.g. 7, 1/2, 0.63" autocomplete="off" /></label>
+              <button class="btn btn--dark" type="submit">Submit</button>
+            </form>
+            <p class="answer__feedback" role="status"></p>
+            <a href="interviews.html" class="link-arrow">Open the full question <span aria-hidden="true">→</span></a>
+          </div></div>
+        </article>
+
+        <!-- 02 -->
+        <article class="q reveal" data-cat="Statistics" data-answer="14731" data-tol="900" data-solution="n ≈ (z₀.₉₇₅ + z₀.₈)² · [p₁(1−p₁) + p₂(1−p₂)] / Δ² = 7.85 · 0.1879 / 0.0001 ≈ 14 700 per arm. Halving the effect quadruples n.">
+          <button class="q__head" aria-expanded="false">
+            <span class="q__num">02</span>
+            <span class="q__title"><small>Statistics · Meta</small>How big does the A/B test need to be?</span>
+            <span class="q__toggle" aria-hidden="true"></span>
+          </button>
+          <div class="q__panel"><div class="q__inner">
+            <p>Your baseline conversion rate is 10%. The team wants the experiment powered to detect a lift to 11% (a 1 percentage-point absolute improvement) with the usual settings: two-sided <i class="m">α = 0.05</i> and 80% power.</p>
+            <p>Estimate the required sample size per arm, and explain what each ingredient contributes and how the answer moves if the target effect shrinks.</p>
+            <form class="answer" novalidate>
+              <label>Your answer<input type="text" inputmode="decimal" placeholder="Type your answer, e.g. 7, 1/2, 0.63" autocomplete="off" /></label>
+              <button class="btn btn--dark" type="submit">Submit</button>
+            </form>
+            <p class="answer__feedback" role="status"></p>
+            <a href="interviews.html" class="link-arrow">Open the full question <span aria-hidden="true">→</span></a>
+          </div></div>
+        </article>
+
+        <!-- 03 -->
+        <article class="q reveal" data-cat="Brainteasers" data-answer="50" data-tol="0.01" data-solution="Each prisoner still succeeds with probability exactly 1/2, so the average is 50 under both strategies. The chain strategy only correlates successes.">
+          <button class="q__head" aria-expanded="false">
+            <span class="q__num">03</span>
+            <span class="q__title"><small>Brainteasers · Jane Street</small>How many prisoners find their number on average?</span>
+            <span class="q__toggle" aria-hidden="true"></span>
+          </button>
+          <div class="q__panel"><div class="q__inner">
+            <p>A hundred prisoners, a hundred boxes with their numbers inside in random order, each prisoner may open fifty boxes. With the famous follow-the-chain strategy, the probability that all hundred succeed is about 31 per cent, compared with essentially zero for random guessing.</p>
+            <p>Does the strategy also increase the average number of prisoners who find their own number? What is that average under random guessing, and under the chain strategy?</p>
+            <form class="answer" novalidate>
+              <label>Your answer<input type="text" inputmode="decimal" placeholder="Type your answer, e.g. 7, 1/2, 0.63" autocomplete="off" /></label>
+              <button class="btn btn--dark" type="submit">Submit</button>
+            </form>
+            <p class="answer__feedback" role="status"></p>
+            <a href="interviews.html" class="link-arrow">Open the full question <span aria-hidden="true">→</span></a>
+          </div></div>
+        </article>
+
+        <!-- 04 -->
+        <article class="q reveal" data-cat="Coding" data-answer="6" data-tol="0.01" data-solution="Let E be the expected wait from scratch: E = 6. HT needs only 4, because a failed H does not reset your progress.">
+          <button class="q__head" aria-expanded="false">
+            <span class="q__num">04</span>
+            <span class="q__title"><small>Coding · Jane Street</small>Expected flips to see two heads in a row</span>
+            <span class="q__toggle" aria-hidden="true"></span>
+          </button>
+          <div class="q__panel"><div class="q__inner">
+            <p>You flip a fair coin until you see two heads in a row (HH).</p>
+            <p>Estimate the expected number of flips by Monte Carlo, then derive the exact answer. Bonus: why is the wait for HT different?</p>
+            <div class="terminal">
+              <div class="terminal__bar"><i></i><i></i><i></i><span>monte_carlo.py</span></div>
+              <pre id="mcOut">target HH   -&gt;  ~6 flips</pre>
+              <button class="terminal__run" id="mcRun" type="button">▶ Run 100 000 simulations</button>
+            </div>
+            <form class="answer" novalidate>
+              <label>Your answer<input type="text" inputmode="decimal" placeholder="Type your answer, e.g. 7, 1/2, 0.63" autocomplete="off" /></label>
+              <button class="btn btn--dark" type="submit">Submit</button>
+            </form>
+            <p class="answer__feedback" role="status"></p>
+            <a href="interviews.html" class="link-arrow">Open the full question <span aria-hidden="true">→</span></a>
+          </div></div>
+        </article>
+
+        <!-- 05 -->
+        <article class="q reveal" data-cat="Market Making" data-answer="1.265" data-tol="0.03" data-solution="Break-even when ½ Γ ΔS² = |Θ|, so ΔS = √(2 · 0.04 / 0.05) ≈ $1.26. That is exactly S · σ / √252 = 100 · 0.20 / 15.87, the daily move implied vol priced in.">
+          <button class="q__head" aria-expanded="false">
+            <span class="q__num">05</span>
+            <span class="q__title"><small>Market Making · Akuna</small>How big a daily move breaks even on your theta?</span>
+            <span class="q__toggle" aria-hidden="true"></span>
+          </button>
+          <div class="q__panel"><div class="q__inner">
+            <p>You hold a delta-hedged long option, gamma <i class="m">Γ = 0.05</i> per share and theta <i class="m">Θ = −0.04</i> per share per day, on a $100 stock priced at <i class="m">20%</i> implied vol.</p>
+            <p>What size daily move exactly breaks even on the day, and why does that number equal the move the option was priced for?</p>
+            <form class="answer" novalidate>
+              <label>Your answer<input type="text" inputmode="decimal" placeholder="Type your answer, e.g. 7, 1/2, 0.63" autocomplete="off" /></label>
+              <button class="btn btn--dark" type="submit">Submit</button>
+            </form>
+            <p class="answer__feedback" role="status"></p>
+            <a href="interviews.html" class="link-arrow">Open the full question <span aria-hidden="true">→</span></a>
+          </div></div>
+        </article>
+
+        <!-- 06 -->
+        <article class="q reveal" data-cat="Mental Math" data-answer="1.196" data-tol="0.0021" data-timer="20" data-solution="(1 + x)ⁿ ≈ 1 + nx + n(n−1)x²/2 + … = 1 + 0.18 + 0.01485 + 0.00068 ≈ 1.196. Simple interest gives +18%; compounding adds about 1.6 points.">
+          <button class="q__head" aria-expanded="false">
+            <span class="q__num">06</span>
+            <span class="q__title"><small>Mental Math · SIG</small>Estimate 1.015 to the 12th power</span>
+            <span class="q__toggle" aria-hidden="true"></span>
+          </button>
+          <div class="q__panel"><div class="q__inner">
+            <p>A fund returns <i class="m">1.5%</i> each month. Compounded over twelve months, its growth factor is <i class="m">(1.015)<sup>12</sup></i>.</p>
+            <p>Estimate <i class="m">(1.015)<sup>12</sup></i> to three decimal places. Aim: under 20 seconds.</p>
+            <div class="stopwatch"><span class="chip chip--dark">+18%</span><span class="stopwatch__time svg-mono" data-stopwatch>00.0 s</span><small>The clock starts when you open the question.</small></div>
+            <form class="answer" novalidate>
+              <label>Your answer<input type="text" inputmode="decimal" placeholder="Type your answer, e.g. 7, 1/2, 0.63" autocomplete="off" /></label>
+              <button class="btn btn--dark" type="submit">Submit</button>
+            </form>
+            <p class="answer__feedback" role="status"></p>
+            <a href="interviews.html" class="link-arrow">Open the full question <span aria-hidden="true">→</span></a>
+          </div></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ STATS ============ -->
+    <section class="section container" aria-label="Community activity">
+      <div class="stats reveal">
+        <div class="stat">
+          <strong data-count="40039">40 039</strong>
+          <span>concepts read</span>
+          <em>+99 today</em>
+        </div>
+        <div class="stat">
+          <strong data-count="1636">1 636</strong>
+          <span>questions solved</span>
+          <em>62% correct</em>
+        </div>
+        <div class="stat">
+          <strong data-count="608" data-suffix=" / 160">608 / 160</strong>
+          <span>atlas islands</span>
+          <em>380% explored</em>
+        </div>
+        <div class="stat">
+          <strong data-count="845" data-suffix="h">845h</strong>
+          <span>focused reading</span>
+          <em>+6h today</em>
+        </div>
+        <div class="live" aria-live="polite">
+          <span class="live__badge"><span class="dot-live"></span>LIVE</span>
+          <div class="live__viewport">
+            <p class="live__item" id="liveItem">Someone just solved <b>“Coins on a round table”</b><small>Jump Trading · Statistics · 12 min ago</small></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NEWSLETTER ============ -->
+    <section class="section container" id="newsletter">
+      <div class="sec-head reveal">
+        <h2><span class="hl">The newsletter</span></h2>
+        <p>New strategies, new concepts, the occasional market note.</p>
+      </div>
+      <div class="newsletter reveal">
+        <div class="newsletter__copy">
+          <h3>A memo, now and then</h3>
+          <p>New strategies, new concepts, the occasional market note. No spam, and one click to leave whenever you want.</p>
+          <form class="newsletter__form" id="nlForm" novalidate>
+            <label class="sr-only" for="nlEmail">Email</label>
+            <input id="nlEmail" type="email" placeholder="you@example.com" autocomplete="email" required />
+            <button class="btn btn--dark" type="submit">Subscribe</button>
+          </form>
+          <p class="newsletter__msg" id="nlMsg" role="status"></p>
+        </div>
+        <svg class="newsletter__art" viewBox="0 0 360 300" aria-hidden="true">
+          <circle cx="190" cy="150" r="130" fill="none" stroke="#191A23" stroke-width="1.5" stroke-dasharray="3 7" class="spin-slow" />
+          <g class="float-a">
+            <rect x="110" y="40" width="160" height="190" rx="18" fill="#fff" stroke="#191A23" stroke-width="2.5" />
+            <path d="M134 78h82M134 102h112M134 126h96M134 150h108" stroke="#191A23" stroke-width="4" stroke-linecap="round" />
+            <path d="M134 190l24-18 20 10 30-26 26 14" fill="none" stroke="#191A23" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="244" cy="70" r="14" fill="#B9FF66" stroke="#191A23" stroke-width="2.5" />
+          </g>
+          <path d="M70 160h240v110a14 14 0 0 1-14 14H84a14 14 0 0 1-14-14z" fill="#191A23" transform="translate(0 6)" />
+          <path d="M70 160h240v110a14 14 0 0 1-14 14H84a14 14 0 0 1-14-14z" fill="#B9FF66" stroke="#191A23" stroke-width="2.5" stroke-linejoin="round" />
+          <path d="M70 160l120 70 120-70" fill="none" stroke="#191A23" stroke-width="2.5" stroke-linejoin="round" />
+          <use href="#spark" x="290" y="60" width="50" height="50" fill="#191A23" class="twinkle" />
+          <use href="#spark" x="30" y="100" width="34" height="34" fill="#B9FF66" stroke="#191A23" stroke-width="4" class="twinkle d2" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="section container">
+      <div class="final reveal">
+        <div class="final__copy">
+          <h2>Start whenever you like.</h2>
+          <p>Begin at the foundations, or jump straight to the track you need.</p>
+          <a href="learn.html#roadmap" class="btn btn--green btn--lg">Open the roadmap →</a>
+        </div>
+        <svg class="final__art" viewBox="0 0 420 300" aria-hidden="true">
+          <path d="M40 250C90 190 150 260 210 200S320 150 370 80" fill="none" stroke="#B9FF66" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round" class="dash-move" />
+          <ellipse cx="60" cy="262" rx="46" ry="16" fill="#F3F3F3" stroke="#fff" stroke-width="2" />
+          <ellipse cx="212" cy="212" rx="40" ry="14" fill="#F3F3F3" stroke="#fff" stroke-width="2" />
+          <ellipse cx="360" cy="96" rx="54" ry="18" fill="#B9FF66" stroke="#fff" stroke-width="2" />
+          <path d="M360 94V24" stroke="#fff" stroke-width="3" stroke-linecap="round" />
+          <path d="M362 26h44l-12 14 12 14h-44z" fill="#B9FF66" stroke="#fff" stroke-width="2.5" stroke-linejoin="round" class="flag-wave" />
+          <circle cx="60" cy="250" r="7" fill="#fff" />
+          <use href="#spark" x="120" y="40" width="60" height="60" fill="#B9FF66" class="twinkle" />
+          <use href="#spark" x="270" y="220" width="28" height="28" fill="#fff" class="twinkle d2" />
+        </svg>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer container" id="footer">
+    <div class="footer__card">
+      <div class="footer__top">
+        <a href="index.html" class="logo logo--light" aria-label="QuantMemo home">
+          <span class="logo__mark" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#spark" /></svg></span>
+          <span class="logo__word">Qm<span class="logo__full">QuantMemo</span></span>
+        </a>
+        <p class="footer__tag">Learn quant, for free.</p>
+      </div>
+
+      <div class="footer__grid">
+        <div class="footer__contact">
+          <span class="hl">Questions?</span>
+          <p>DM the founder, <a href="https://x.com/PriyanshuP1405" target="_blank" rel="noopener">@PriyanshuP1405</a></p>
+        </div>
+        <nav class="footer__col" aria-label="Explore">
+          <h4>Explore</h4>
+          <a href="daily.html">Daily</a><a href="research.html">Research</a>
+        </nav>
+        <nav class="footer__col" aria-label="Learn">
+          <h4>Learn</h4>
+          <a href="learn.html">Learn</a><a href="interviews.html">Interviews</a><a href="concepts.html">Concepts</a><a href="glossary.html">Glossary</a><a href="build.html">Build It Yourself</a>
+        </nav>
+        <nav class="footer__col" aria-label="More">
+          <h4>More</h4>
+          <a href="strategies.html">Strategies</a><a href="tools.html">Tools</a><a href="writing.html">Writing</a><a href="memos.html">Memos</a><a href="about.html">About</a><a href="careers.html">Careers</a>
+        </nav>
+      </div>
+
+      <div class="footer__legal">
+        <p>For educational purposes only. Not investment advice.</p>
+        <p>I may have positions in instruments discussed. Past performance is not indicative of future results.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ COMMAND PALETTE ============ -->
+  <div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="Search" hidden>
+    <div class="palette__backdrop" data-close></div>
+    <div class="palette__box">
+      <div class="palette__input">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input id="paletteInput" type="search" placeholder="Search strategies, concepts, tools, firms…" autocomplete="off" aria-controls="paletteList" />
+        <kbd>Esc</kbd>
+      </div>
+      <ul class="palette__list" id="paletteList" role="listbox"></ul>
+      <div class="palette__foot svg-mono"><span>↑↓ navigate</span><span>↵ open</span><span>esc close</span></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
